@@ -1,0 +1,7 @@
+Django 
+Djangorestframework
+Djangorestframework-simplejwt
+Django-model-utils
+django-jsonfield
+psycopg2-binary
+gunicorn

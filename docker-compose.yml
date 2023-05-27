@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  asesoria:
+    container_name: asesoria
+    build: 
+      context: ./Asesorias
+      dockerfile: dockerfile
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - ./Asesorias/:/Asesorias
+    ports:
+      - 80:8000
+    env_file:
+      - ./.env_dev 
+
+  db:
+    image: postgres
+    container_name: db
+    ports:
+      - 5432:5432
+    environment:
+      POSTGRES_PASSWORD: 12345
+      POSTGRESS_USER: asesoria
+      POSTGRES_DB: asesoria
