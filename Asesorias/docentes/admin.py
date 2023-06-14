@@ -1,5 +1,5 @@
 from django.contrib import admin
-from.models import Docente, Estudiante, Materia, Asesoria
+from.models import Docente, Estudiante, Materia, Asesoria, Horario, Programa
 
 # Register your models here.
 
@@ -8,15 +8,14 @@ class DocenteAdmin(admin.ModelAdmin):
     search_fields = ('nombre', 'celular', 'email')
     list_display = ('nombre', 'celular', 'email')
     filter_horizontal = ['materias']
-    
-   
 
 admin.site.register(Docente, DocenteAdmin)
 
 class EstudianteAdmin(admin.ModelAdmin): 
     readonly_fields = ('creado', 'editado')
-    search_fields = ('nombre', 'programa', 'celular', 'email')
-    list_display = ('nombre', 'programa', 'celular', 'email')
+    search_fields = ('nombre',  'celular', 'email')
+    list_display = ('nombre',  'celular', 'email')
+    filter_horizontal = ['materias']
     
 
 admin.site.register(Estudiante, EstudianteAdmin)
@@ -24,18 +23,34 @@ admin.site.register(Estudiante, EstudianteAdmin)
 
 class MateriaAdmin(admin.ModelAdmin): 
     readonly_fields = ('creado', 'editado')
-   # search_fields = ('nombre')
+    search_fields = ('nombre', 'creado')
    # list_display = ('nombre' )
     
-
 admin.site.register(Materia, MateriaAdmin)
+
+class ProgramaAdmin(admin.ModelAdmin): 
+    readonly_fields = ('creado', 'editado')
+    search_fields = ('nombre', 'creado')
+   # list_display = ('nombre' )
+    
+admin.site.register(Programa, ProgramaAdmin)
+
+class HorarioAdmin(admin.ModelAdmin): 
+    readonly_fields = ('creado', 'editado')
+    search_fields = ('horario', 'creado')
+    list_display = ('horario', 'creado')
+    
+admin.site.register(Horario, HorarioAdmin)
 
 class AsesoriaAdmin(admin.ModelAdmin): 
     readonly_fields = ('creado', 'editado')
-    search_fields = ('fecha', 'estado')
-    list_display = ('fecha','hora', 'estado')
+    list_display = ('fecha','hora', 'estado', 'tipoSolicitud')
+    search_fields= ('fecha','hora', 'estado', 'tipoSolicitud')
+    filter_horizontal = ['materia','docente','estudiante']
 
 admin.site.register(Asesoria, AsesoriaAdmin)
+
+
 
 
 
