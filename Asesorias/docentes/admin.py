@@ -7,6 +7,7 @@ class DocenteAdmin(admin.ModelAdmin):
     readonly_fields = ('creado', 'editado')
     search_fields = ('nombre', 'celular', 'email')
     list_display = ('nombre', 'celular', 'email')
+    list_filter = ['nombre', 'celular', 'email']
     filter_horizontal = ['materias']
 
 admin.site.register(Docente, DocenteAdmin)
@@ -15,6 +16,7 @@ class EstudianteAdmin(admin.ModelAdmin):
     readonly_fields = ('creado', 'editado')
     search_fields = ('nombre',  'celular', 'email')
     list_display = ('nombre',  'celular', 'email')
+    list_filter = ['nombre',  'celular', 'email']
     filter_horizontal = ['materias']
     
 
@@ -46,6 +48,7 @@ class AsesoriaAdmin(admin.ModelAdmin):
     readonly_fields = ('creado', 'editado')
     list_display = ('fecha','hora', 'estado', 'tipoSolicitud')
     search_fields= ('fecha','hora', 'estado', 'tipoSolicitud')
+    list_filter = ['fecha','hora', 'estado', 'tipoSolicitud', 'docente', 'materia', 'estudiante']
     filter_horizontal = ['materia','docente','estudiante']
 
 admin.site.register(Asesoria, AsesoriaAdmin)

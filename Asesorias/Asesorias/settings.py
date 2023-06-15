@@ -34,6 +34,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'jazzmin',
     'admin_interface',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -41,11 +42,25 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'docentes', 
+    'docentes.apps.DocentesConfig', 
     'mainapp',
     'rest_framework',
     'colorfield',
 ]
+
+JAZZMIN_SETTINGS = {
+    "site_title": "UNIREMINGTON",
+    "site_header": "UNIREMINGTON",
+    "site_brand": "UNIREMINGTON",
+    #"site_logo": "ProyectoCitas\Asesorias\media\logo.png",
+    #"login_logo": "ProyectoCitas\Asesorias\media\logo.png",
+    "welcome_sign": "Bienvenido a Asesorias Uniremington" ,
+    "site_icon": "ProyectoCitas\Asesorias\media\logo.png" 
+       }
+
+JAZZMIN_SETTINGS["show_ui_builder"] = True
+
+
 
 X_FRAME_OPTIONS='SAMEORIGIN'
 
@@ -127,6 +142,10 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 
+import os
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
