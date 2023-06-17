@@ -46,16 +46,22 @@ INSTALLED_APPS = [
     'mainapp',
     'rest_framework',
     'colorfield',
+    'import_export',
 ]
 
 JAZZMIN_SETTINGS = {
     "site_title": "UNIREMINGTON",
     "site_header": "UNIREMINGTON",
     "site_brand": "UNIREMINGTON",
+    "topmenu_links": [
+        {"name": "Asesorías Uniremington", "url": "home", "permissions": ["auth.view_user"]},
+        
+        {"model": "auth.User"},
+    ],
     #"site_logo": "ProyectoCitas\Asesorias\media\logo.png",
     #"login_logo": "ProyectoCitas\Asesorias\media\logo.png",
     "welcome_sign": "Bienvenido a Asesorias Uniremington" ,
-    "site_icon": "ProyectoCitas\Asesorias\media\logo.png" 
+    #"site_icon": "ProyectoCitas\Asesorias\media\logo.png" 
        }
 
 JAZZMIN_SETTINGS["show_ui_builder"] = True

@@ -61,7 +61,7 @@ class Docente(models.Model):
     celular = models.FloatField(verbose_name="Celular", max_length=10)
     horarios = models.ManyToManyField(Horario, verbose_name="Horarios", blank=True)
     email = models.EmailField(blank=True)
-    biografia = models.CharField(max_length=1000, verbose_name="Biografía", default="0")
+    biografia = models.TextField(max_length=10000, verbose_name="Biografía", default="0")
     foto = models.ImageField(upload_to='Documentos/ProyectoCitas/asesorias/Imgs/', height_field=None, width_field=None, max_length=None, verbose_name="Foto")
     creado = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Creación")
     editado = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Actualización")
@@ -100,10 +100,10 @@ class Asesoria(models.Model):
     estudiante = models.ManyToManyField( Estudiante, verbose_name="Estudiante", blank=True, null= True)
     fecha = models.DateField(verbose_name="Fecha de Asesoria")
     hora =models.TimeField(null=True)
-    comentarios = models.CharField(max_length=500, verbose_name="Comentarios")
+    comentarios = models.TextField(max_length=500, verbose_name="Comentarios")
     estado = models.CharField(max_length=15, choices=opcionesEstado, default=CREADA, verbose_name="Estado")
     creado = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Creación")
-    editado = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Actialización")
+    editado = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Actualización")
 
     class Meta: 
         verbose_name = 'Asesoria'
@@ -113,11 +113,14 @@ class Asesoria(models.Model):
         return self.tipoSolicitud
 
     
+class BaseConocimiento(models.Model):
 
-
-
-
-
+    materia = models.ManyToManyField( Materia ,verbose_name="Materia", blank=True, null= True)
+    tema = models.CharField(max_length=500, verbose_name="Tema")
+    problema = models.CharField(max_length=10000, verbose_name="Problema")
+    soluciónP = models.TextField(max_length=10000, verbose_name="Solución Planetada")
+    creado = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Creación")
+    editado = models.DateTimeField(auto_now_add=True, verbose_name="Fecha de Actualización")
 
 
 
